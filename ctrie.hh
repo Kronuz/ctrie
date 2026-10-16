@@ -252,11 +252,20 @@ namespace ctrie {
 	typename detail::Build<0, detail::Trie<0, '\0'>, Words...>::type build(Words...) { return {}; }
 } // namespace ctrie
 
+#if defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wgnu-string-literal-operator-template"
+#elif defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+#endif
 template <typename CharT, CharT... Letters>
 constexpr
 ctrie::detail::Word<Letters..., '\0'> operator""_cword() { return {}; }
-#pragma clang diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#elif defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif
 
 #endif // CTRIE_HH

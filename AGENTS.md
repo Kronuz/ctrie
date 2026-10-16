@@ -8,13 +8,13 @@ reference.
 
 ```
 ctrie.hh         The whole library: detail::Trie/Insert/Build, ctrie::build(), operator""_cword.
-CMakeLists.txt   INTERFACE target ctrie::ctrie (C++17). No tests yet; CI only builds.
+test/test.cc     static_assert lookups plus every runtime find() overload.
+CMakeLists.txt   INTERFACE target ctrie::ctrie (C++17); ctrie_test when top-level.
 ```
 
 ## Known issues
 
-- The header's final pragma is `push` where it should be `pop`, so the
-  `-Wgnu-string-literal-operator-template` suppression leaks into includers.
 - `operator""_cword` is a GNU extension (string literal operator template); MSVC
   rejects it.
-- No tests: add a `static_assert` suite before changing `Insert` or `find`.
+- The literal operator's warning suppression is scoped with push/pop; keep it
+  scoped so it never leaks into includers.
