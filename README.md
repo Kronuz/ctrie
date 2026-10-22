@@ -64,5 +64,5 @@ Issues and pull requests are welcome. CI must pass on every platform.
 
 ## 📄 License
 
-MIT, Copyright (c) 2019 Germán Méndez Bravo and Terrance Howard. See [LICENSE](LICENSE).
+MIT, Copyright (c) 2019-2026 Germán Méndez Bravo and (c) 2019 Terrance Howard. See [LICENSE](LICENSE).
 Based on [heyterrance/ctrie](https://github.com/heyterrance/ctrie).
